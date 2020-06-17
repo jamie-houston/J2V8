@@ -43,6 +43,8 @@ macos_config.build_step(c.build_node_js, build_node_js)
 #-----------------------------------------------------------------------
 def build_j2v8_cmake(config):
     cmake_vars = cmu.setAllVars(config)
+    V8_monolith_library_dir = config.platform + "." + config.arch
+
 
     # NOTE: uses Python string interpolation (see: https://stackoverflow.com/a/4450610)
     return \
@@ -50,6 +52,7 @@ def build_j2v8_cmake(config):
         ["cd " + u.cmake_out_dir] + \
         u.rm("CMakeCache.txt CMakeFiles/") + \
         ["""cmake \
+            -DJ2V8_MONOLITH_LIB_DIR={0} \
             -DCMAKE_BUILD_TYPE=Release \
             %(cmake_vars)s \
             ../../ \
