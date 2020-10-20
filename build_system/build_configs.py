@@ -10,10 +10,10 @@ import constants as c
 configs = [
       # ANDROID builds
       {
-            "name": "android-x86 @ Docker",
+            "name": "android-x86_64 @ Docker",
             "params": {
                   "target": c.target_android,
-                  "arch": c.arch_x86,
+                  "arch": c.arch_x86_64,
                   "docker": True,
                   "node_enabled": True,
             },
